@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet.vectorgrid@latest/dist/Leaflet.VectorGrid.bundled.js"></script>
+    <style>
+        #map {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+</body>
+<script>
+    let map = L.map('map').setView([43, -74.5], 7);
+    const accessToken = 'pk.eyJ1Ijoid2lqZmkiLCJhIjoiY2t5a3AwcWk0MjF6bDJucnNhcXNqc3QycyJ9.lU0F__ocOGIpXEBH6Acn9w'
+
+    const mapboxUrl = `https://api.mapbox.com/v4/wijfi.1vfjtgse/{z}/{x}/{y}.vector.pbf?sku=101nf3Cr4A33q&access_token=${accessToken}`
+    
+    const mapboxVectorTileOptions = {
+        rendererFactory: L.canvas.tile,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://www.mapbox.com/about/maps/">MapBox</a>',
+        vectorTileLayerStyles: {
+            'tl_2021_36_tract__tl_2021_36_-1tfifg': {
+                weight: 1,
+                fillColor: '#c545d3',
+                color: '#c545d3',
+                fillOpacity: 0.2,
+                opacity: 0.4
+            },
+        },
+        token: accessToken
+    };
+
+    L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`, {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'your.mapbox.access.token'
+    }).addTo(map);
+
+    L.vectorGrid.protobuf(mapboxUrl, mapboxVectorTileOptions).addTo(map)
+</script>
+
+</html>
