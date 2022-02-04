@@ -14,7 +14,7 @@ https://www.qgis.org/en/site/forusers/download.html
 ---
 
 ### Slippy maps
-  ![This is a alt text.](/vector_tiles_pyramid_structure.png "This is a sample image.")
+  ![Slippy Maps](/img/vector_tiles_pyramid_structure.png "Slippy maps")
   - Raster tiles
     - Many images rendered on the server
     - New requests made during navigation
@@ -113,14 +113,29 @@ https://www.qgis.org/en/site/forusers/download.html
 ## QGIS
   - Import layers, style and prepare map
   - For single layer, right click and export layer as geojson
-  - For multiple layers
+    ![Export single](/img/ExportSingle.png "Export single")
+  - For multiple layers use the bulkvectorplugin:
+    ![bulkvectorplugin](/img/bulkvectorplugin.png "bulkvectorplugin")
     - Plugins -> Manage and install -> install "bulkvectorexport"
     - Choose Vector -> bulkvectorexport
+    ![bulkvectorplugin](/img/bulkvectorplugin-use.png "bulkvectorplugin")
     - Select folder to export to
+    ![bulkvectorplugin](/img/bulkvectorplugin-geojson.png "bulkvectorplugin")
 ## Mapbox Studio
-  - Create style
-  - Add tilesets to style
-  - Publish
+### Upload tileset
+  ![mb](/img/mb-1.png "mb")
+  ![mb](/img/mb-2.png "mb")
+  ![mb](/img/mb-3.png "mb")
+  ![mb](/img/mb-4.png "mb")
+### Create style
+  ![mb](/img/mb-5.png "mb")
+  ![mb](/img/mb-6.png "mb")
+### Add tilesets to style and style
+  ![mb](/img/mb-7.png "mb")
+  ![mb](/img/mb-8.png "mb")
+### Publish
+  ![mb](/img/mb-9.png "mb")
+  ![mb](/img/mb-10.png "mb")
 ## MapboxGL.js
   - https://docs.mapbox.com/api/maps/vector-tiles/
   - Follow first example replacing necessary parts with mapbox info
@@ -128,4 +143,5 @@ https://www.qgis.org/en/site/forusers/download.html
     - Either add in studio
     - Or add it in code
 ## Leaflet
-
+  - https://leafletjs.com/examples/quick-start/
+  - https://github.com/Leaflet/Leaflet.VectorGrid
